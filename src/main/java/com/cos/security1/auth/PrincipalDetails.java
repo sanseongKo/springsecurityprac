@@ -2,11 +2,15 @@ package com.cos.security1.auth;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Map;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import com.cos.security1.model.User;
+
+import lombok.Data;
 
 //시큐리티가 /login 주소 요청이 오면 낚아채서 로긍니을 진행시킨다.
 //로그인을 진행이 완료가 되면 시큐리티 session을 만들어 준다.(Security ContextHolder)
@@ -16,7 +20,8 @@ import com.cos.security1.model.User;
 
 //Security Session => Authentication => UserDetails(PrincipalDetails) 
 
-public class PrincipalDetails implements UserDetails{
+@Data
+public class PrincipalDetails implements UserDetails, OAuth2User{
 	
 	private User user;//콤포지션
 	
@@ -65,5 +70,15 @@ public class PrincipalDetails implements UserDetails{
 		//우리 사이트!! 1년동안 회원 로그인 x 휴면계정으로
 		
 		return true;
+	}
+	@Override
+	public Map<String, Object> getAttributes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public String getName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
