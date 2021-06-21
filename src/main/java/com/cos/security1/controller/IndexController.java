@@ -51,8 +51,11 @@ public class IndexController {
 		return "index";
 	}
 	
+	//Oauth로그인을 해도 principalDetails로 받을 수 있고
+	//일반 로그인을 해도 principalDetails로 받을 수 있다.
 	@GetMapping("/user")
-	public @ResponseBody String user() {
+	public @ResponseBody String user(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println("principalDetails: "+principalDetails.getUser());
 		return "user";
 	}
 	@GetMapping("/admin")
@@ -97,5 +100,5 @@ public class IndexController {
 	public @ResponseBody String data() {
 		return "데이터 정보";
 	}
-
+	
 }
