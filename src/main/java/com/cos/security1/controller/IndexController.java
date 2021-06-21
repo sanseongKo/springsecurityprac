@@ -68,7 +68,7 @@ public class IndexController {
 		return "개인정보";
 	}
 
-	@PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")//두개이상의 것을 넣어줄때
+	@PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")//두개이상의 시큐리티를 사용할 때 넣어줄때
 	@GetMapping("/data")
 	public @ResponseBody String data() {
 		return "데이터 정보";
